@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.4</version>
+		<version>3.3.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>Spring-Framework-final_revision</groupId>
-	<artifactId>SpringDataJPA01-CRUDRepository</artifactId>
+	<groupId>com.vignesh</groupId>
+	<artifactId>SpringDataJPA01-CrudRepository</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SpringDataJPA01-CRUDRepository</name>
-	<description>Project to implement Spring Data JPA module</description>
+	<name>SpringDataJPA01-CrudRepository</name>
+	<description>Spring-Framework-Final-Revision</description>
 	<url/>
 	<licenses>
 		<license/>

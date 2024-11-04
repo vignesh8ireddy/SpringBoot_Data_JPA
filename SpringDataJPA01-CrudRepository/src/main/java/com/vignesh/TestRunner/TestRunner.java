@@ -1,4 +1,4 @@
-package com.vignesh.Runner;
+package com.vignesh.TestRunner;
 
 import java.util.List;
 
@@ -42,14 +42,19 @@ public class TestRunner implements CommandLineRunner {
 		*/
 		
 		/*
-		System.out.println("Customer id = 52 : " + customerService.findCustomerById(52));
-		System.out.println("Customer id = 6 : " + customerService.findCustomerById(6));
+		System.out.println("Customer id = 52 : " + customerService.getCustomerById(52));
+		System.out.println("Customer id = 6 : " + customerService.getCustomerById(6));
 		*/
 		
 		/*
 		Iterable<Integer> cidList = List.of(52,1,2);
-		System.out.println("Customers with ids=(52,1,2): " + customerService.findAllCustomersByIds(cidList));
+		System.out.println("Customers with ids=(52,1,2): " + customerService.getAllCustomersByIds(cidList));
 		*/
+		
+		/*
+		System.out.println("List of all the customers: " + customerService.getAllCustomers());
+		*/
+		
 	}
 
 }

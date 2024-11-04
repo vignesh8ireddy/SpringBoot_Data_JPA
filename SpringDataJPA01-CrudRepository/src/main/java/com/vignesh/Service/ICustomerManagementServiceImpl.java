@@ -43,17 +43,25 @@ public class ICustomerManagementServiceImpl implements ICustomerManagementServic
 	}
 	
 	@Override
-	public String findCustomerById(Integer cid) {
+	public String getCustomerById(Integer cid) {
 		Optional optionalObj = customerRepository.findById(cid);
 		if(optionalObj.isPresent()) return ((Customer)optionalObj.get()).toString();
 		return "No customer with id: "+cid;
 	}
 	
+	
 	@Override
-	public String findAllCustomersByIds(Iterable<Integer> cidList) {
+	public String getAllCustomersByIds(Iterable<Integer> cidList) {
 		
 		Iterable<Customer> customerList = customerRepository.findAllById(cidList);
 		return ((Collection)customerList).toString();
+	}
+	
+	
+	@Override
+	public String getAllCustomers() {
+		Iterable<Customer> customerList = customerRepository.findAll();
+		return customerList.toString();
 	}
 
 }

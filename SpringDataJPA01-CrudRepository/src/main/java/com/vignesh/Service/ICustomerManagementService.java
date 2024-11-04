@@ -9,7 +9,8 @@ public interface ICustomerManagementService {
 	
 	public long countCustomers();
 	public boolean isThereAnyCustomerWithId(Integer cid);
-	public String findCustomerById(Integer cid);
-	public String findAllCustomersByIds(Iterable<Integer> cidList);
+	public String getCustomerById(Integer cid);
+	public String getAllCustomersByIds(Iterable<Integer> cidList);
+	public String getAllCustomers();
 	
 }

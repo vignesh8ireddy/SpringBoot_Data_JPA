@@ -26,10 +26,10 @@ public class TestRunner implements CommandLineRunner {
 		*/
 		BankAccount bankAccount = new BankAccount();
 		bankAccount.setAccountNumber(4000000L);
-		bankAccount.setAccountHolderName("Ethan");
-		bankAccount.setAccountBalance(6000.00);
+		bankAccount.setAccountHolderName("Jordan");
+		bankAccount.setAccountBalance(6200.00);
 		bankAccount.setAccountHolderMobile(9132339307L);
-		System.out.println(bankAccountService.updateBankAccount(bankAccount));
+		System.out.println("After Modifying: "+bankAccountService.updateBankAccount(bankAccount));
 		System.out.println(bankAccountRepository.getBankAccountByNumber(4000000L));
 
 	}

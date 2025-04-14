@@ -179,12 +179,47 @@ to client class through the service class, so handle them at either at service c
   ```
   * Static Scalar Projections
   * Dynamic Scalar Projections
-* @Query Methods
-   * Named parameters & Positional parameters (@Param)
-   * @Transactional, @Modifying
+* Query Methods
+   * @Query(String) Annotation for JPQL(HQL) or Native SQL on the top of the custom method declarations.
+     * JPQL - Java Persistence Query Language
+     * HQL - Hibernate Query Language
+   * @Query Annotation doesn't support INSERT queries.
+     * JPQL queries can't work with generators configured with the id property of the Model class, but in spring data
+     jpa the id value must be generated using generator.
+     * So, use predefined save() or saveXxxxx() methods of CrudRepository or JpaRepository interface for insertion.
+   * Advantages of Query methods over Finder methods
+     * Allows to work using JPQL queries, native queries,...
+     * Allows to work with PL/SQL procedures and functions
+     * Supports aggregate select operations
+     * Supports group by, order by,... clauses
+     * Allows to work with Joins
+     * Flexibility in choosing query method names and method signatures.
+   * @Param Annotation: Named parameters, Positional parameters, Ordinal Positional parameters
+   ```
+      Examples:
+      @Query("FROM Doctor WHERE income>=?1 AND income<=?2")//Ordinal Positional Parameters
+      public Iterable<Doctor> searchDoctorsByIncome(double startRange, double endRange);
+      
+      @Query("FROM Doctor WHERE income>=:start AND income<=:end")//Named Parameters
+      public List<Doctor> searchDoctorsByIncome(@Param("start") double startRange, @Param("end") double endRange);
+  
+      @Query("SELECT docId, docName, docPhone FROM Doctor WHERE income>=:start AND income<=:end")//Named Parameters
+      public Iterable<Object[]> searchDoctorsByIncome(@Param("start") double startRange, @Param("end") double endRange);
+  
+      @Query("FROM Doctor WHERE docId=:id")//Named Parameters
+      public Doctor searchDoctorById(@Param("id") int docId);
+   ```
+  * @Transactional annotation is useful to commit and rollback the changes.
+    * Since, select operation doesn't change anything in the DB, @Transactional is optional for select queries however,
+    it is mandatory to have the annotation over non-select queries.
+  * @Modifying annotation indicates the query is a non-select query.
+* Working with PL/SQL Procedures and Functions
+  * EntityManager.createStoredProcedureQuery(String,Class):StoredProcedureQuery
+  * StoredProcedureQuery.registerStoredProcedureParameter(int,Class,ParameterMode)
+  * StoredProcedureQuery.setParameter(int,Object)
+  * StoredProcedureQuery.getResultList()
 * @Version, @CreationTimeStamp and @UpdateTimestamp
 * Working with Date and Time
-  * LocalDate, LocalTime and LocalDateTime
 * Working with BOB and LOB
 * Associations
 * Interacting with multiple DB s/w
